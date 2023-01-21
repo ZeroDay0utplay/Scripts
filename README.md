@@ -12,4 +12,4 @@
 ## CCPP
 ### a C++ compiler for Vscpp that compiles the C++ file and executes it 
 ## Deployer
-### a script for pushing to different GH repos (used for my portfolio to push to this repo and the one linked with render.com (auto PR) to facilitate moving needed files like .env & .gitignore which needed in the other repo)
+### a script for pushing to different GH repos (used for my portfolio to push to this repo and the one linked with render.com (auto PR) to facilitate moving needed files like .env & .gitignore which are needed in the other repo for connecting to DB)
