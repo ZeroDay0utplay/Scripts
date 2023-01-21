@@ -1,13 +1,13 @@
 # Scripts to make life easier
 ## Python Compiler
 ### a cross platform GUI script to make python scripts executable using Tkinter with some features like embedding binaries (pdf, photos, videos...) and give the exe an icon
-## Modules needed
+### Modules needed
 ### sudo apt install python3-tk
 ## pkg_init 
 ### a script used to create the need files and directories for creating python packages
 ## YoutubeDownloader
 ### a script for downloading youtube videos
-## Modules needed
+### Modules needed
 ### pip install pytube
 ## gh_pusher
 ### a very simple script to push to a GitHub repo
