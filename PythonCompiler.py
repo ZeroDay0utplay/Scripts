@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from time import sleep
 from tkinter import Tk 
 from tkinter.filedialog import askopenfilename
