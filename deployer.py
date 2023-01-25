@@ -2,11 +2,17 @@
 
 import subprocess
 import os
+from tkinter import *
+from tkinter import filedialog
 
 
-dir = "/home/zdo/Pictures/Porfolio/"
-my_dir = "/home/zdo/Documents/Projects/Porfolio/"
+root = Tk()
+root.withdraw()
 
+my_dir = filedialog.askdirectory(title="Choose the source directory")
+dir = filedialog.askdirectory(title="Choose the target directory")
+
+os.chdir(my_dir)
 content = subprocess.check_output("ls -a", shell=True).decode().splitlines()
 
 exceptions = [".", "..", ".git", ".gitignore", "deployer.py"]
