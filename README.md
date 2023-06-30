@@ -13,6 +13,8 @@
 ### a very simple script to push to a GitHub repo
 ## Vscpp
 ### a script written in C++ used for Competitive Programming to setup the needed ENV (C++ template running on VSCode with the input file for tests)
+## VSpy
+### a script written in C++ used for Competitive Programming to setup the needed ENV (Python template running on VSCode with the input file for tests)
 ## CCPP
 ### a C++ compiler for Vscpp that compiles the C++ file and executes it 
 ## Deployer

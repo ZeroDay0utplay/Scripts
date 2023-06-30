@@ -49,10 +49,31 @@ T binpow(T a, T b, T m=INF) {
 }
 
 
+template <typename T>
+vector<bool> bfs(vector<vector<T>> adj, T source_vertex){
+    T n = adj.size(); // number of nodes
 
+    queue<T> q;
+    vector<bool> visited(n);
+    vector<T> d(n), p(n);
 
-
-
+    q.push(source_vertex);
+    visited[source_vertex] = true;
+    p[source_vertex] = -1;
+    while (!q.empty()) {
+        T v = q.front();
+        q.pop();
+        for (T u : adj[v]) {
+            if (!visited[u]) {
+                visited[u] = true;
+                q.push(u);
+                d[u] = d[v] + 1;
+                p[u] = v;
+            }
+        }
+    }
+    return visited;
+}
 
 
 

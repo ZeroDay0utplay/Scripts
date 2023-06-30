@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     int l = arg.length();
 
 
-    if (portion(arg, l-4, l) != ".cpp")
+    if (portion(arg, l-3, l) != ".py")
     {
         cout << "[!] Please enter the filename extension (.cpp)\n";
         return 1;
@@ -36,11 +36,25 @@ int main(int argc, char *argv[])
             s+=arg[i];
         }
     }
-    s+=".cpp";
-    string cmd = "copy \%userprofile\%/\\Documents\\projects\\Scripts\\VSCPP\\cpp.cpp ./" + s;
-    const char *command = cmd.c_str();
+    s+=".py";
     
-    system(command);
+
+    std::string userProfile = std::getenv("USERPROFILE");
+    std::string sourceFilePath = userProfile + "\\Documents\\projects\\Scripts\\VSpy\\py.py";
+
+    std::ifstream sourceFile(sourceFilePath, std::ios::binary);
+    std::ofstream destFile(s, std::ios::binary);
+    
+    if (sourceFile && destFile) {
+        destFile << sourceFile.rdbuf();  // Copy the contents of the source file to the destination file
+        std::cout << "File copied successfully!" << std::endl;
+    } else {
+        std::cout << "Failed to open files for copying." << std::endl;
+    }
+
+    sourceFile.close();
+    destFile.close();
+
     string vs = "code ./" + s;
     const char *runVS = vs.c_str();
     system("code input.txt");
