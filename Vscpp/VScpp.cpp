@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    system("type nul > input.txt");
+    ofstream outFile("input.txt");
 
     for (int i=0; i<l-3; i++)
     {
@@ -38,8 +38,24 @@ int main(int argc, char *argv[])
     }
     s+=".cpp";
 
-    std::string userProfile = std::getenv("USERPROFILE");
-    std::string sourceFilePath = userProfile + "\\Documents\\projects\\Scripts\\Vscpp\\cpp.cpp";
+    std::string userProfile;
+    std::string sourceFilePath;
+
+    string path = "";
+
+    //Get the path of the executed file to locate cpp.cpp easily
+    //The location needs to be detected automatically
+
+    #ifdef _WIN32
+        path = "Documents\\Projects\\Scripts\\Vscpp";
+        userProfile = std::getenv("USERPROFILE");
+        cout << userProfile + "\\" + path + "\\cpp.cpp" << endl;
+        sourceFilePath = userProfile + "\\" + path + "\\cpp.cpp";
+    #else
+        path = "Documents/Projects/Scripts/Vscpp";
+        userProfile = std::getenv("HOME");
+        sourceFilePath = userProfile + "/" + path + "/cpp.cpp";
+    #endif
 
     std::ifstream sourceFile(sourceFilePath, std::ios::binary);
     std::ofstream destFile(s, std::ios::binary);
@@ -53,6 +69,7 @@ int main(int argc, char *argv[])
 
     sourceFile.close();
     destFile.close();
+    outFile.close();
     
     string vs = "code ./" + s;
     const char *runVS = vs.c_str();
