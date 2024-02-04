@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
-
 import os
 
 
-os.system(f"git add . && git commit -m \"{input('[*] Commit: ')}\" ; git push")
+os.system("git add .")
+os.system(f"git commit -m \"{input('[*] Commit: ')}\"")
+os.system("git push")

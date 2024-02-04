@@ -26,13 +26,8 @@ int main(int argc, char *argv[])
     }
     
     for (int i=0; i<l-3; i++)
-    {
-        int car = arg[i];
-        if ((car > 64 && car < 123) || (car > 47 && car < 58))
-        {
-            s+=arg[i];
-        }
-    }
+        if (iswalnum(arg[i])) s+=arg[i];
+
     s+=".cpp";
     
     string vs = "g++ -Wall ./" + s;
@@ -41,7 +36,14 @@ int main(int argc, char *argv[])
     int err = system(runVS);
     if (err) {cout << "[!] Compilation Error.\n"; exit(1);}
     cout << "\n[+] Compiled Successfully.\n";
-    string exe = "./a.out";
+    
+    string exe;
+    #ifdef _WIN32
+        exe = ".\\a.exe";
+    #else
+        exe = "./a.out";
+    #endif
+
     const char *runCmp = exe.c_str();
     cout << "[*] Running ...\n";
     system(runCmp);

@@ -9,11 +9,14 @@ typedef vector<int> vi;
 typedef vector<ll> vl;
 typedef pair<int, int> pi;
 typedef pair<ll, ll> pl;
+typedef set<int> si;
 
 
 #define INF 1e9
 #define epsilon 1e-9
+#define mod 1e9+7
 #define PB push_back
+#define mp make_pair
 #define FOR(n) for (ll i=0; i<n; i++)
 
 
@@ -25,8 +28,12 @@ vector<vl> permutations;
 vector<string> str_perm;
 const ll n = 3; //change it for each permutation
 bool chosen[n+1]; 
-
-
+map<char,int> alphabet = {
+        {'a', 1}, {'b', 2}, {'c', 3}, {'d', 4}, {'e', 5}, {'f', 6}, {'g', 7},
+        {'h', 8}, {'i', 9}, {'j', 10}, {'k', 11}, {'l', 12}, {'m', 13},
+        {'n', 14}, {'o', 15}, {'p', 16}, {'q', 17}, {'r', 18}, {'s', 19},
+        {'t', 20}, {'u', 21}, {'v', 22}, {'w', 23}, {'x', 24}, {'y', 25}, {'z', 26}
+    };
 
 void generate_subset(ll from, ll to);
 void generate_Permutations();
@@ -75,6 +82,21 @@ vector<bool> bfs(vector<vector<T>> adj, T source_vertex){
     return visited;
 }
 
+int nbNodes=100;
+vector<bool> visited(nbNodes);
+vector<vi> adj(nbNodes);
+vi topsort;
+
+void dfs(int node){
+    visited[node]=true;
+    for (int child: adj[node]){
+        if (!visited[child]) // avoid cyclic behavior
+            dfs(child);
+    }
+    //topsort.push_back(node); // DAG // Other way Indegree / Outdegree
+
+}
+
 
 
 
@@ -85,11 +107,14 @@ vector<bool> bfs(vector<vector<T>> adj, T source_vertex){
 
 int main(){
     
+    //cout << fixed << setprecision(10);
     ios::sync_with_stdio(0);
     cin.tie(0);
+    //cout.tie(0);
 
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
+        //freopen("output.txt", "w", stdout);
     #endif
 
     
